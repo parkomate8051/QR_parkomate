@@ -1,0 +1,43 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+
+    <br>
+    
+
+    <div class="row justify-content-center mt-3" >
+        <div class="col-md-7 text-center">
+                <h1>
+                    You are at {{PM_site}}, on floor {{PM_floor}}, near piller {{PM_piller}}
+                </h1>       
+                <br>
+                <h3 style="color: rgb(241, 13, 51)">
+                    Take screenshot of this page to save your current location
+                </h3>
+                <hr>
+        </div>
+    </div>
+
+
+    <div class="row justify-content-center mt-3" >
+        <div class="col-md-7 text-center">
+            <form method="POST">
+                {% csrf_token %}
+                <b><font size="5"> <label for="location2find">Select the Location you want to go from your current location :</label>   </font></b>
+                    <select name="location2find" id="location2find">
+                        {% for location in locations %}
+                            <option value={{location}}>{{location}}</option>
+                        {% endfor %}
+                    </select>
+                <br><br>
+                <button type="submit" class="btn btn-warning  btn-lg">Find Location</button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}
